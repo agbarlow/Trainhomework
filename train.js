@@ -43,6 +43,7 @@ database.ref().push(newTrain);
 //console.log(newTrain.dest);
 //console.log(newTrain.time);
 //console.log(newTrain.freq);
+//console.log(moment(newTrain.time).format("HH:mm"));
 
 alert ("Train successfully added");
 
@@ -73,42 +74,39 @@ console.log(trainFreq);
 var freqNum = parseInt(trainFreq);
 var startTime = parseInt(trainTime);
 var currentTime = moment().unix();
-var timeCheck = false;
-console.log(currentTime);
+
+//var timeCheck = false;
+//console.log(currentTime);
 console.log(freqNum);
 console.log(startTime);
-//var trainStartPretty = moment.unix(trainTime).format("HHmm");
-//console.log(trainStartPretty);
-
-//var trainNextArr
-
-//for (; timeCheck===false; ) {
-//if (moment(trainTime).isBefore(currentTime)) {
-//trainTime=moment().add(freqNum,"m");
-//console.log(trainTime);
-
-//} else {
-//timeCheck=true;
-console.log(startTime=startTime + moment().add(trainFreq,"mm"));
-console.log(moment(trainFreq));
-
-//alert(moment.unix(startTime).format("HHmm"));
-//}
-//}
-//console.log(Works);
-//}
-
- //for current time is less than real time; add freq to current time
-//for (; moment(startTime).isBefore(currentTime); startTime=moment().add(freqNum,'m')) { 
-//console.log(moment.unix(startTime).format("HHmm"));
-//};
-
-//console.log(trainNextArr)
-
-//var minsAway
-//console.log(minsAway)
+console.log(currentTime);
+console.log(moment().format("HH:mm"));
+//console.log(moment().unix().formation("HH:mm"));
 
 
+//changing Unix time into an integer.
+var currentTime2=parseInt(currentTime);
+
+console.log(currentTime2);
+ //for loop to calculate future train arrival
+
+for (; (startTime<currentTime2); startTime=startTime+(freqNum * 60)) {
+console.log(startTime)
+} 
+
+var nextArrival = moment.unix(startTime).format("HH:mm");
+console.log(moment.unix(startTime).format("HH:mm"));
+
+// calculating the time away currently
+var timeAway = (startTime-currentTime2)/60;
+var minsAway = timeAway.toFixed(0);
+console.log(minsAway);
+
+
+//push to table
+
+ $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" +
+  trainFreq + "</td><td>" + nextArrival + "</td><td>" + minsAway + "</td></tr>");
 
 
 });
