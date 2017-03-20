@@ -94,7 +94,7 @@ for (; (startTime<currentTime2); startTime=startTime+(freqNum * 60)) {
 console.log(startTime)
 } 
 
-var nextArrival = moment.unix(startTime).format("HH:mm");
+var nextArrival = moment.unix(startTime).format("h:mm a");
 console.log(moment.unix(startTime).format("HH:mm"));
 
 // calculating the time away currently
